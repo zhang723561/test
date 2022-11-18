@@ -85,7 +85,8 @@ $list:a b c;
   }
 }
 .name{
-  @include getName()
+  @include getName();
+  display: block;
 }
 
 
