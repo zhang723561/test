@@ -1,0 +1,92 @@
+//设置基础公共样式
+$main-color:#f60 !default
+$main-color:#ccc;
+
+// 申明局部变量并使用
+.outWrap{
+  $color:red;
+  background: $color
+}
+
+// 嵌套使用
+.test{
+  color:$main-color;
+  &-btns{
+    width: 100px;
+    height: 20px;
+  }
+}
+
+// 占位符 placeholder  使用%声明占位符，@extend 来应用占位符
+%border{
+  border:1px solid blue;
+}
+.square{
+  width: 100px;
+  height: 100px;
+  @extend %border
+}
+
+//继承
+.border{
+   border:1px solid green
+}
+.out{
+  &-innder{
+    @extend .border
+  }
+}
+
+// 混入 mixin   include
+@mixin custom-border($width:3px){
+   border:$width solid $main-color
+}
+.nav .selected{
+  @include custom-border(6px)
+}
+
+// 条件指令@if
+@mixin isDisplay($bool:true){
+   @if($bool){
+     display: block;
+   }@else{
+     display: none;
+   }
+}
+.test{
+  @include isDisplay;
+  //@include isDisplay(false)
+}
+
+// 循环指令 @for   through 包含3   to 不包含3
+@for $i from 1 through 3{
+  .item-#{$i}{
+    width: 2px * $i;
+  }
+}
+
+// 循环指令 @while
+$sum:5;
+$sum-width:20px;
+@while $sum > 0{
+  .item-#{$sum}{
+    width:$sum-width - $sum;
+  }
+  $sum:$sum -1
+}
+
+// 循环指令 @each
+$list:a b c;
+@mixin getName{
+  @each $name in $list{
+    .photo-#{$list}{
+      background: url('/images/#{$name}.png');
+    }
+  }
+}
+.name{
+  @include getName()
+}
+
+
+//
