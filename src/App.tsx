@@ -5,9 +5,11 @@ import {Link,Outlet} from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-       <div>测试</div>
+       <div className='navHeader'>头部区域</div>
 
-        <div>
+        <div className='sidebar'>侧边栏</div>
+
+        <div className='content'>
             <Link className ='link' to='/Tab1'> Tab1</Link>
             <Link className = 'link' to='/Tab2'> Tab2 </Link>
         </div>

@@ -16,12 +16,13 @@ export const routerItems  = [
                 Component:lazy(()=>import('../views/tab2')),
                 children:[],
             },
+            {
+                path:'*',
+                Component:lazy(()=>import('../views/404')),
+                children:[]
+            }
         ]
     },
 
-    {
-        path:'*',
-        Component:lazy(()=>import('../views/404')),
-        children:[]
-    }
+
 ]
