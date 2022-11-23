@@ -1,19 +1,21 @@
 import React from 'react';
 import{ Suspense,lazy, useEffect } from 'react';
-import ReactDOM from 'react-dom/client';
+// import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom'
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { Provider } from 'react-redux'
+import { configureStore } from "@reduxjs/toolkit";
+
 import {BrowserRouter,Routes,Route,Navigate,useNavigate} from 'react-router-dom'
 import {routerItems } from './router/index'
+
 import Tab1 from './views/tab1'
 import Tab2 from './views/tab2'
 
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
 
 
 // loading页面
@@ -48,17 +50,23 @@ const rotuerViews = (routerItems: ({ path: string; Component: React.LazyExoticCo
 
 }
 
-root.render(
-  <React.StrictMode>
-      <BrowserRouter>
-          <Routes>
-              {/*<Route path = '/' element = {<App/>}>*/}
-              {/*    <Route path = 'Tab1' element = {<Tab1/>} />*/}
-              {/*    <Route path = 'Tab2' element = {<Tab2/>} />*/}
-              {/*</Route>*/}
-              {rotuerViews(routerItems)}
-          </Routes>
-      </BrowserRouter>
-  </React.StrictMode>
+// @ts-ignore
+ReactDOM.render(
+    // @ts-ignore
+
+        <React.StrictMode>
+
+            <BrowserRouter>
+                <Routes>
+                    {/*<Route path = '/' element = {<App/>}>*/}
+                    {/*    <Route path = 'Tab1' element = {<Tab1/>} />*/}
+                    {/*    <Route path = 'Tab2' element = {<Tab2/>} />*/}
+                    {/*</Route>*/}
+                    {rotuerViews(routerItems)}
+                </Routes>
+            </BrowserRouter>
+        </React.StrictMode>
+
+ , document.getElementById('root')
 );
 reportWebVitals();
