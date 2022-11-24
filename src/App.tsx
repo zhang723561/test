@@ -12,6 +12,7 @@ function App() {
         <div className='content'>
             <Link className ='link' to='/Tab1'> Tab1</Link>
             <Link className = 'link' to='/Tab2'> Tab2 </Link>
+            <Link className = 'link' to='/modal'> modal </Link>
         </div>
 
         <Outlet></Outlet>

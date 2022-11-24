@@ -17,6 +17,11 @@ export const routerItems  = [
                 children:[],
             },
             {
+                path:'modal',
+                Component:lazy(()=>import('../views/modal')),
+                children:[],
+            },
+            {
                 path:'*',
                 Component:lazy(()=>import('../views/404')),
                 children:[]
