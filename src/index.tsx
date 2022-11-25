@@ -31,7 +31,6 @@ const Loading = () => (
 
 const rotuerViews = (routerItems: ({ path: string; Component: React.LazyExoticComponent<() => JSX.Element>; redirect: string; children: ({ path: string; Component: React.LazyExoticComponent<() => JSX.Element>; children?: undefined; } | { path: string; Component: React.LazyExoticComponent<() => JSX.Element>; children: never[]; })[]; } | { path: string; Component: React.LazyExoticComponent<() => JSX.Element>; children: never[]; redirect?: undefined; })[] | { path: any; Component: any; children: any; redirect: any; }[])=>{
     if(routerItems && routerItems.length){
-        // @ts-ignore
         return routerItems.map(({path,Component,children,redirect})=>{
             return children && children.length ? (
                 <Route path={path} key={path} element={<Suspense fallback={<Loading/>}><Component/></Suspense>}>
@@ -51,12 +50,12 @@ const rotuerViews = (routerItems: ({ path: string; Component: React.LazyExoticCo
 }
 
 root.render(
-        <React.StrictMode>
+
             <BrowserRouter>
                 <Routes>
                     {rotuerViews(routerItems)}
                 </Routes>
             </BrowserRouter>
-        </React.StrictMode>
+
 );
 reportWebVitals();
