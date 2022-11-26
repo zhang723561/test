@@ -5,8 +5,9 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
-import { Provider } from 'react-redux'
-import { configureStore } from "@reduxjs/toolkit";
+
+import {Provider} from 'react-redux';
+import store from '../src/store';
 
 import {BrowserRouter,Routes,Route,Navigate,useNavigate} from 'react-router-dom'
 import {routerItems } from './router/index'
@@ -50,12 +51,14 @@ const rotuerViews = (routerItems: ({ path: string; Component: React.LazyExoticCo
 }
 
 root.render(
+    <Provider store={store}>
+        <BrowserRouter>
+            <Routes>
+                {rotuerViews(routerItems)}
+            </Routes>
+        </BrowserRouter>
+    </Provider>
 
-            <BrowserRouter>
-                <Routes>
-                    {rotuerViews(routerItems)}
-                </Routes>
-            </BrowserRouter>
 
 );
 reportWebVitals();

@@ -14,7 +14,7 @@ function App() {
                 <Link className = 'link' to='/Tab2'> Tab2 </Link>
                 <Link className = 'link' to='/modal'> modal </Link>
                 <Link className = 'link' to='/404'> 404 </Link>
-
+                <Link className = 'see' to='/see'>see</Link>
             </div>
             <div className='right'>
                 <Outlet></Outlet>

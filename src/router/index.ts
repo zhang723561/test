@@ -22,6 +22,11 @@ export const routerItems  = [
                 children:[],
             },
             {
+                path:'see',
+                Component:lazy(()=>import('../views/see')),
+                children:[],
+            },
+            {
                 path:'*',
                 Component:lazy(()=>import('../views/404')),
                 children:[]
