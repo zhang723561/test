@@ -22,6 +22,7 @@ export const counterSlice = createSlice({
             // action 里面有 type 和 payload 两个属性，所有的传参都在payload里面
             state.value += payload.value;
         },
+        //
         decrement: (state) => {
             state.value -= 1;
         },
