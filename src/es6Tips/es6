@@ -1,0 +1,25 @@
+ v-model 基础变化
+
+vue2 的版本中 作为语法糖  基本功能是对 form表单组件的值进行双向使用 初始时它实际上是传递一个属性value，然后接收一个input事件
+ 由于input 事件并不适用于所有情况 例如 checkBox 是check 事件，而且有些时候，一些组件并不是通过input来进行触发事件 所以后续又
+引入了 model 属性对v-model 进行了扩展 在子组件中对接收信息事件进行定义到了vue3 版本 实现了父组件传递这些model信息
+v-model:title='title'等价于 :title="title" @update:title = "title = $event"
+
+
+es6 相关
+
+声明：
+    let、const  不同于 var ,他们在代码块中执行，const 必须在声明时赋值 let可以在申明时也可以在使用时赋值  不允许重复声明
+    es6 声明方法： let const function var class import
+
+解构赋值：
+    字符串解构： 字符串是基于数组的  数组是基于对象的 这里可以看作数组解构 逗号作占位符 不常用 字符串不可通过下标修改值
+    对象解构：const { x:zz, y = 2 } = { x: 1 }  可以设置默认值 或者更改别名
+    数组解构：[x, y] = [y, x] 通常可用于更换位置 也可以设置默认值
+            定义函数参数默认值：function Func({ x = 1, y = 2 } = {}) {}
+            遍历Map结构：for (let [k, v] of Map) {}
+            输入模块指定属性和方法：const { readFile, writeFile } = require("fs")
+
+    解构赋值规则：只要等号右边的值不是对象或数组，就先将其转为对象
+    undefined和null无法转为对象，因此无法进行解构
+
