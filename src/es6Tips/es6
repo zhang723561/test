@@ -1,7 +1,7 @@
- v-model 基础变化
+v-model 基础变化
 
 vue2 的版本中 作为语法糖  基本功能是对 form表单组件的值进行双向使用 初始时它实际上是传递一个属性value，然后接收一个input事件
- 由于input 事件并不适用于所有情况 例如 checkBox 是check 事件，而且有些时候，一些组件并不是通过input来进行触发事件 所以后续又
+由于input 事件并不适用于所有情况 例如 checkBox 是check 事件，而且有些时候，一些组件并不是通过input来进行触发事件 所以后续又
 引入了 model 属性对v-model 进行了扩展 在子组件中对接收信息事件进行定义到了vue3 版本 实现了父组件传递这些model信息
 v-model:title='title'等价于 :title="title" @update:title = "title = $event"
 
@@ -23,3 +23,25 @@ es6 相关
     解构赋值规则：只要等号右边的值不是对象或数组，就先将其转为对象
     undefined和null无法转为对象，因此无法进行解构
 
+(个人认为会使用到的)
+    Number.parseInt()：返回转换值的整数部分
+    Number.parseFloat()：返回转换值的浮点数部分
+    Math.trunc()：返回数值整数部分
+    Math.cbrt()：返回数值立方根
+    Math.imul()：返回两个数值相乘
+    Math.fround()：返回数值的32位单精度浮点数形式
+
+    克隆数组：const arr = [...arr1]
+    合并数组：const arr = [...arr1, ...arr2]
+    拼接数组：arr.push(...arr1)
+    转换字符串为数组：[..."hello"]
+
+    去重字符串：[...new Set(str)].join("")
+    并集：new Set([...a, ...b])
+    交集：new Set([...a].filter(v => b.has(v)))
+    差集：new Set([...a].filter(v => !b.has(v)))
+
+
+es6的Proxy:
+    Proxy是一个构造器。通过new Proxy(原对象,{代理列表})的方式来创建代理对象
+    好处在于：在保持原对象不变的情况下，给代理对象中添加新的功能，或者是改造某些功能
