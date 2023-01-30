@@ -45,3 +45,14 @@ es6 相关
 es6的Proxy:
     Proxy是一个构造器。通过new Proxy(原对象,{代理列表})的方式来创建代理对象
     好处在于：在保持原对象不变的情况下，给代理对象中添加新的功能，或者是改造某些功能
+
+
+将数字转换成 进制    num.toString(2)  2进制
+打乱数组顺序  arr.sort(()=>{0.5 - Math.random()})
+回文字符串： 正写相当于反写的字符串
+Object.freeze(obj) 可用于冻结对象 deepFreeze :深度冻结
+num.toFixed(n) :保留指定的n位小数
+清空数组  arr.length = 0
+空值合并运算符  ?? 与|| 类似  :左侧为null或者undefined时使用右侧内容
+
+
