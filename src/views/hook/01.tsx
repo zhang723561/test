@@ -1,5 +1,5 @@
 import React from "react";
-export  const DemoState = (props:any) => {
+export  const DemoState = (props:number) => {
     /* number为此时state读取值 ，setNumber为派发更新的函数 */
     let [number, setNumber] = React.useState(0) /* 0为初始值 */
     return (<div>
