@@ -1,5 +1,6 @@
 import React,{Component}  from "react";
 import Clock from "./components/test";
+import {Button} from 'antd'
 import './tab2.css'
 
 interface IPropsBar {
@@ -73,7 +74,8 @@ class Tab2 extends Component<any, any>{
                 <NumberList nums={[1,2,3]}></NumberList>
                 {button}
                 <div className='clickDiv' onClick={() => this.tick('add')}>增加</div>
-                <div className='clickDiv' onClick={() => this.tick('minus')}>减少</div>
+
+                <Button type='primary' onClick={() => this.tick('minus')}>split</Button>
             </main>
         );
     }
