@@ -1,0 +1,11 @@
+.clickDiv{
+    width:100px;
+    line-height: 20px;
+    height:20px;
+    box-sizing: border-box;
+    border: 1px solid blue;
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 10px;
+}
