@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-<canvas width="300" height="300" id="canvas">
+<canvas width="800" height="800" id="canvas">
 
 </canvas>
 
@@ -26,10 +26,35 @@
         let ctx = canvas.getContext('2d');
         // 一段完整的绘制
         ctx.beginPath()
-        ctx.moveTo(50, 50);
-        ctx.lineTo(200, 200);
+        ctx.moveTo(50, 30);
+        //ctx.lineTo(200, 30);
+        ctx.quadraticCurveTo(125, 50, 200, 30);
         ctx.stroke();
         ctx.closePath();
+
+        ctx.beginPath()
+        ctx.strokeRect(50, 50, 200, 100);
+        ctx.closePath();
+       //  ctx.fillRect(50, 50, 200, 100);
+       //  ctx.clearRect(75, 75, 100, 70);
+        ctx.beginPath()
+        ctx.arc(200, 60, 50, Math.PI/4, Math.PI , false);
+        ctx.stroke();
+        ctx.fill()
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.ellipse(250, 350, 50, 100, Math.PI/2, 0, 2 * Math.PI); // 旋转90°
+        ctx.fill();
+
+        ctx.font = "50px serif"; // 设置文案大小和字体
+        ctx.shadowColor = "#cccccc"; //  设置阴影颜色
+        ctx.fillStyle = "#ee7934"; //  设置填充颜色
+        ctx.shadowOffsetX = 10; // X轴上的阴影
+        ctx.shadowOffsetY = 10; // Y轴上的阴影
+        ctx.shadowBlur = 5; // 阴影的模糊程度
+
+        ctx.fillText("Canvas 详解", 300, 250);
 
         // 矩形
         //strokeRect(x, y, width, height)x和y 是矩形的起点坐标，width和height 是矩形的宽高
@@ -57,6 +82,7 @@
         // lineCap  线段端点展示  butt round square 三个选项
         //lineJoin 该属性可以设置两线段连接处所显示的样子。可选值为：round, bevel 和 miter
 
+        // 文字： ctx.fillText(txt, x, y, maxWidth) 内容 坐标 最大宽度（选填）
     }
 </script>
 </body>

@@ -39,6 +39,8 @@
   margin-left: 10px;
   box-sizing: border-box;
   border: 1px solid sandybrown;
+  border-radius: 3px;
+  padding: 8px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

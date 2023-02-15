@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>canvas 基本使用</title>
+    <style>
+        canvas {
+            box-shadow: 0px 0px 5px #ccc;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+<canvas width="300" height="300" id="canvas">
+
+</canvas>
+
+<script>
+    // requestAnimationFrame(callback)：告诉浏览器你希望执行一个动画，并在重绘之前，请求浏览器执行一个特定的函数来更新动画。
+    // 获取 canvas 元素
+    let canvas = document.getElementById('canvas');
+    // 通过判断getContext方法是否存在来判断浏览器的支持性
+    if(canvas.getContext) {
+          let ctx = canvas.getContext('2d')
+          let ball = {
+              x:100,
+              y:100,
+              vx:4,
+              vy:3,
+              radius:25,
+              color:'orange',
+              draw:function(){
+                  ctx.beginPath()
+                  ctx.arc(this.x,this.y,this.radius,0,Math.PI *2,false)
+                  ctx.closePath()
+                  ctx.fillStyle = this.color;
+                  ctx.fill();
+                  // 绘制小球
+              }
+          }
+
+
+
+          function actions(){
+              // 清除内容 重新绘图
+              //ctx.clearRect(0,0, canvas.width, canvas.height);
+              ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+              ctx.fillRect(0, 0, canvas.width, canvas.height);
+              ball.draw();
+
+               let finalX = null
+              // 添加加速度  运动量会发生变化
+              ball.vy *= .99;
+              ball.vy += .25;
+
+               if(ball.vx > 0){
+                   ball.vx -= 0.01;
+               }
+
+              // ball.vx =  ball.vx !== 0 ? ball.vx + .25 : 0;
+
+              // 添加速率
+              ball.x += ball.vx;
+              ball.y += ball.vy;
+
+              // 添加边界
+              if (ball.y + ball.vy > canvas.height -ball.radius || ball.y + ball.vy < 0 + ball.radius) {
+                  ball.vy = -ball.vy;
+                  if(ball.vy<0.05){
+                      ball.y = canvas.height -ball.radius
+                  }
+
+              }
+              if (ball.x + ball.vx > canvas.width - ball.radius || ball.x + ball.vx < 0 + ball.radius) {
+                  ball.vx = -ball.vx;
+              }
+
+              window.requestAnimationFrame(actions);
+          }
+
+        window.requestAnimationFrame(actions);
+        ball.draw();
+    }
+</script>
+</body>
+</html>
