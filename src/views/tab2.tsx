@@ -1,5 +1,4 @@
 import React,{Component}  from "react";
-import Clock from "./components/test";
 import {Button} from 'antd'
 import './tab2.css'
 

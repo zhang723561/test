@@ -15,6 +15,7 @@ function App() {
                 <Link className = 'link' to='/modal'> modal </Link>
                 <Link className = 'link' to='/404'> 404 </Link>
                 <Link className = 'see' to='/see'>see</Link>
+                <Link className = 'link' to='/todo'>pro</Link>
             </div>
             <div className='right'>
                 <Outlet></Outlet>
