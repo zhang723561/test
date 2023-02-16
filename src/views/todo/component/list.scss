@@ -1,0 +1,56 @@
+
+
+.out{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-between;
+  width: 500px;
+  box-sizing: border-box;
+  border: 1px solid blue;
+  border-radius: 3px;
+  margin-top: 20px;
+  .listWrap{
+    min-height: 300px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    .line{
+      display: flex;
+      box-sizing: border-box;
+      align-items: center;
+      padding: 2px;
+      width: 100%;
+      height:40px;
+      justify-content: space-between;
+      cursor: pointer;
+      background: #cccccc;
+      &.finished{
+        background: #61dafb;
+      }
+      .delBtn{
+         display: none;
+      }
+      .task{
+        font-size: 16px;
+        font-weight: 600;
+        &.finish{
+          color: green;
+        }
+      }
+      &:hover{
+        .delBtn{
+          display: block;
+        }
+      }
+    }
+  }
+  .under{
+    height: 30px;
+    line-height: 30px;
+    background: skyblue;
+    display: flex;
+    gap:15px
+  }
+}

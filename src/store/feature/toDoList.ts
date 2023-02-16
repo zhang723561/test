@@ -1,12 +1,21 @@
 
 
 import { createSlice } from '@reduxjs/toolkit';
+import {message} from 'antd';
 
-export interface CounterState {
-   list:string[]
+interface CounterState {
+   list:task[]
+}
+
+interface task{
+    name:string,
+    status:boolean
 }
 const initialState: CounterState = {
-   list:['测试1','测试2']
+   list:[
+       {name:'测试',status:false},
+       {name:'测试1',status:false},
+       ]
 };
 
 // 创建一个 Slice
@@ -17,17 +26,27 @@ export const toDoList = createSlice({
     reducers: {
         // 定义一个加的方法
         addProgress: (state, {payload}) => {
-             state.list.unshift(payload)
-
+            let target = state.list.map((item)=> { return item})
+            if(target.some((item)=>item.name == payload.pro.name)){
+                message.warning('重复任务')
+                return
+            }
+             state.list = [payload.pro,...state.list]
         },
 
         deleteProgress:(state,{payload})=>{
-            state.list = state.list.splice(payload,1)
+            state.list =  state.list.filter((item)=>{
+                return item.name !== payload.name
+            })
+        },
+
+        setStatus:(state,{payload})=>{
+            state.list[payload.num].status = !state.list[payload.num].status
         }
     },
 });
 // 导出加减的方法
-export const { addProgress,deleteProgress} = toDoList.actions;
+export const { addProgress,deleteProgress,setStatus} = toDoList.actions;
 
 // 默认导出
 export default toDoList.reducer;
