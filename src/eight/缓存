@@ -1,0 +1,39 @@
+缓存的作用 ： 缓解服务器压力 不需要反复请求
+            提升性能 本地资源快于请求
+            减少网络消耗
+
+web 缓存种类 ：数据库缓存  将查询后的数据放在内存中缓存使用
+              cdn缓存  cdn会自动计算获取内容最短的路径 可以将常用的内容存储在cdn
+              代理服务器缓存
+              浏览器缓存 ：指在本地计算机中开辟一块内存区 同时开辟了一个硬盘区域作为数据传输的缓冲 并以此暂时保存以前的访问信息
+
+
+强缓存 和 协商缓存
+
+    强缓存 ：初次请求数据后 浏览器会根据返回值的 response Header 来判断是否需要对资源
+            缓存 (expires\pragma\cache-control) 这样在第二次请求的时候 浏览器判断请求
+            的参数 如果符合强缓存规则 则从本地缓存获取数据  若不符合则会将响应参数存入request
+            header 中 判断是否符合协商缓存 符合依旧是获取本地信息 否则 返回全新资源
+
+            expires:  过期时间  是一个时间戳 若再次请求的时间超出了这个值 则重新请求
+                      问题：可以本地修改时间 导致失效
+
+            cache-control ：  public : 资源在客户端 服务端 均可缓存
+                              private : 资源只能在客户端缓存
+                              no-cache : 客户端缓存资源 但是否缓存需要经过协商缓存验证
+                              no-store : 不使用缓存
+                              max-age : 缓存保质期 （使用了相对时间 解决了expires 的问题）
+
+            pragma : 禁用网页缓存的字段  no-cache 效果同 cache-control的 no-cache
+
+    协商缓存 ：last-modified\if-modified-science
+              last-modified : 返回的是资源文件在服务器最后被修改时间
+              if-modified-science : 服务端通过该字段与 last-modified 值对比 确定如何返回资源
+
+              etag/If-None-Match
+                etag ： 服务器响应请求时，返回当前资源文件的一个唯一标识(由服务器生成)
+                If-None-Match 是客户端再次发起该请求时，携带上次请求返回的唯一标识Etag值
+                        服务端会将该值与服务器的etag 值对比 一致则返回304 不一致则 200
+
+
+Etag / If-None-Match优先级高于Last-Modified / If-Modified-Since，同时存在则只有Etag / If-None-Match生效
