@@ -41,6 +41,7 @@ export const toDoList = createSlice({
         },
 
         setStatus:(state,{payload})=>{
+            if(state.list[payload.num].name !== payload.name) return
             state.list[payload.num].status = !state.list[payload.num].status
         }
     },

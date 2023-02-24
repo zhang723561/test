@@ -17,7 +17,7 @@ function Todo(){
             <div className='listWrap'>
                 {
                     list.map((item:any,index:number)=>{
-                        return   <div key={index}  onClick={()=>{dispatch(setStatus({num:index}))}}
+                        return   <div key={index}  onClick={()=>{dispatch(setStatus({num:index,name:item.name}))}}
                                       className={item.status ? 'finished line':'line'}
                         >
                         <span className={item.status?'task finish':'task'}>{item.name}</span>
