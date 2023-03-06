@@ -1,0 +1,94 @@
+
+set 对象允许存储 任何类型的唯一值  即set中的元素是唯一的
+set 是值的集合 实现了iterator接口 所以可以使用扩展运算 以及 for..of..遍历
+
+set.prototype.add(v) :添加
+set.prototype.delete(v) :删除  返回一个布尔值 表示删除是否成功
+set.prototype.has(v):返回布尔值表示是否拥有该成员
+set.prototype.clear() 清空  没有返回值
+
+keys() : 键名(set 没有键名 所以获取的是键值)   values(): 键值  entries(): 键值对
+
+[...new Set(str)].join('') :可以去除字符串里的重复字符
+
+new Set([...a,...b]) : 并集
+new Set([...a].filter(x => b.has(x))) : 交集
+new Set([...a].filter(x => !b.has(x))) : 差集
+
+
+
+weakSet: 和set类似，也是不重复的值的集合 但成员只能是对象   弱引用  不可遍历
+WeakSet 适合临时存放一组对象，以及存放跟对象绑定的信息。只要这些对象在外部消失，它在 WeakSet 里面的引用就会自动消失
+使用场景：储存 DOM 节点，而不用担心这些节点从文档移除时，会引发内存泄漏
+
+
+map:
+    map对象保存键值对，并且能够记住键的原始插入顺序。任何值(对象或者基础类型) 都可以作为一个键或一个值
+
+map 和 object 的区别
+  1 map只包含显示插入的键   object有原型链上的键 可能和自定义的键名冲突
+  2 map的键可以是任意值     object 的键只能是string 活或者 symbol
+  3 map 的key 是有序的（插入顺序）     object的key 无序
+  4 map的键值对数量可以通过size属性获取  object 只能通过手动计算
+  5 map的键可以直接被迭代   object需要先获取再迭代
+  6 map 更适用于频繁增删的情况处理
+
+数组去重：
+
+利用map
+const unique = arr =>{
+    const map = new Map();
+    for(let i =0;i<arr.length;i++){
+        if(!map.has(arr[i])){
+            map.set(arr[i],true);
+        }
+    }
+    return [...map.keys()];
+}
+
+ 利用 自身的reduce方法
+  const reduceArr = arr => {
+     let obj = {}
+     let res = arr.reduce((item, next) => {
+       obj[next.typeId] ? '' : (obj[next.typeId] = true && item.push(next))
+       return item
+     }, [])
+     return res
+   }
+
+
+
+weakMap 只接受对象作为键名（null 除外）
+
+
+// 深拷贝简易版本
+const deepClone = source => {
+  // 创建一个 WeakMap 对象，记录已拷贝过的对象
+  const weakmap = new WeakMap();
+  // 判断是否为数组
+  const isArray = arr => Object.prototype.toString.call(arr) === '[object Array]';
+  // 判断是否为引用类型
+  const isObject = obj => obj !== null && (typeof obj === 'object' || typeof obj === 'function');
+  //拷贝（递归）
+  const copy = input => {
+    // 当输入为函数或基本数据类型时，直接返回
+    if (typeof input === 'function' || !isObject(input)) return input;
+    // 针对已拷贝过的对象，直接返回
+    if (weakmap.has(input)) {
+      return weakmap.get(input)
+     }
+    const output = isArray(input) ? [] : {};
+    // 记录每次拷贝的对象(需要放在递归引用的前面)
+    weakmap.set(input, output);
+    for (let key in input) {
+      // console.log(key)
+      // 如果key是对象的自有属性
+      if (input.hasOwnProperty(key)) {
+        // 递归调用深拷贝方法
+        output[key] = copy(input[key]);
+       }
+     } 
+    return output;
+   }
+  return copy(source);
+}
