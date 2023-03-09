@@ -1,0 +1,24 @@
+a标签下载方式, 将返回结果处理成一个新链接, 通过创建a标签打开, 这种方式的优点在于内部请求不需要对鉴权做多余处理, 也可以拿到返回结果进行操作,
+缺点在于不注意之间会产生乱码,及数据量太大导致网络失败.
+使用blob容器可以解决数据量大导致网络失败的问题,
+而乱码问题在二进制流前拼接字符串'\ufeff'即可
+
+ this.$axios({
+      method: params.method,
+      url: params.url,
+      data: params.data,
+      responseType: 'blob'  // 指明返回格式, 这里注明一下, 如果导出EXCEL为[object blob]的话, 可以把这段responseType:'blob' 注释掉试一下.
+    }).then(res => {
+      console.log(res) // 返回结果
+      // 这里尤其需要注意, '\ufeff' 用于解决乱码问题, blob可以解决数据量大导致网络失败.
+      const blob = new Blob(['\ufeff' + res.data], { type: 'text/csv;charset=utf-8' })
+      const url = window.URL.createObjectURL(blob)
+      // 通过创建a标签实现
+      const link = document.createElement('a')
+      link.href = url
+      // 对下载的文件命名, 如果后端返回名称出现乱码, 需要后端编码一下.
+      link.download = decodeURI(res.headers['content-disposition'].split('=')[1]) || '发货单导出数据表.csv'
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+    })

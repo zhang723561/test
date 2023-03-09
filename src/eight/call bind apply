@@ -1,0 +1,35 @@
+
+call 的作用在于改变函数的作用域 可以接受多个参数 但第一个参数必须是待被指向的对象
+     剩余的参数则会传入借用过来的函数内
+
+Function.prototype.call = function(target,...args){
+    target = target || window
+    const symbolKey = Symbol()
+    target[symbolKey] = this
+   const res =  target[symbolKey](...args)
+   delete target[symbolKey]
+   return res
+}
+
+
+bind 接受的第一个参数是一个对象，哪个方法调用bind方法，那么这个方法中的this，就是指向这个对象
+
+Function.prototype.myBind = function(target,...out){
+  target = target || {} // 处理边界条件
+  const symbolKey = Symbol()
+  target[symbolKey] = this
+  return function (...inner) { // 返回一个函数
+   const res =  target[symbolKey](...out,...inner)
+    // 不进行摧毁 可能多次调用
+    return tres
+  }
+}
+
+
+衍生 ： this指向问题
+
+1 箭头函数  箭头函数的this是创建它时外层this的指向
+2 new      new 关键字调用的函数 this 指向创建的新对象
+3 bind    多次bind 指认第一次bind的值 （bind不能改变箭头函数的 this）
+4 apply call  他们的第一个参数即 this
+5 直接调用   this 指向全局对象  浏览器是 window  node.js 中 是 global
