@@ -61,7 +61,7 @@ class Tab2 extends Component<any, any>{
     render() {
         const age = this.state.age
         let button = null
-        if(age <=5){
+        if(age <5){
             button = <Link name='小于5'></Link>
         }else{
             button = <Link name='大于等于5'></Link>
@@ -70,7 +70,7 @@ class Tab2 extends Component<any, any>{
             <main >
                 <Child name="测试"></Child>
                 <h2>{age}</h2>
-                <NumberList nums={[1,2,3]}></NumberList>
+                <NumberList nums={[1,2,3,4,5]}></NumberList>
                 {button}
                 <div className='clickDiv' onClick={() => this.tick('add')}>增加</div>
 
