@@ -1,47 +1,20 @@
 import React ,{Component}from 'react'
-import {Button} from 'antd'
-
-const ThemeContext = React.createContext('warning')
+import './scss/modal.scss'
 
 class Modal extends  Component<any, any>{
 
      render(){
          return (
-             <ThemeContext.Provider value="primar111y">
-                 <Bar />
-             </ThemeContext.Provider>
+            <div className="buttonWrap">
+                <button className=" btn typeScroll">滑箱</button>
+                <button className=" btn guo">果冻</button>
+                <button className=" btn shine">闪光</button>
+                <button className=" btn bubble">气泡</button>
+            </div>
+
          );
      }
 
-}
-
-class ThemeButton extends Component<any, any>{
-    constructor(props:any) {
-        super(props);
-    }
-    static contextType = ThemeContext;
-    render(){
-        return(
-            <ThemeContext.Consumer>
-                {(theme) =>{
-                    return(
-                        <div>
-                            <Button type={this.props.type} danger>{theme}</Button>
-                        </div>
-                    )
-                } }
-            </ThemeContext.Consumer>
-        )
-
-    }
-}
-
-function Bar(){
-    return(
-        <div>
-            <ThemeButton type='dashed' />
-        </div>
-    )
 }
 
 

@@ -1,0 +1,117 @@
+.buttonWrap{
+  width: 100%;
+  display:flex;
+  gap: 16px;
+  .btn{
+    width: 60px;
+    height: 32px;
+    border-radius: 3px;
+    overflow: hidden;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  .typeScroll{
+    outline: none;
+    border: none;
+    z-index: 1;
+    position: relative;
+    color: white;
+    background: #40a9ff;
+    &::before{
+      content: "";
+      z-index: -1;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #fa541c;
+      transform-origin: center bottom;  // 控制展开收起起始点
+      transform: scaleY(0); // 控制横向或者纵向的变动  scaleX(0)
+      transition: transform 0.4s ease-in-out;
+    }
+    &:hover::before {
+      transform-origin: center top;
+      transform: scaleY(1);
+    }
+  }
+  .guo{
+    z-index: 1;
+    color: white;
+    background: #40a9ff;
+    outline: none;
+    border: none;
+    &:hover{
+      animation: jelly 0.5s;
+    }
+  }
+  .shine{
+    outline: none;
+    border: none;
+    z-index: 1;
+    position: relative;
+    color: white;
+    background: #262626;
+    --shine-width: 20px;
+    &::after {
+      content: "";
+      z-index: -1;
+      position: absolute;
+      background: #595959;
+      top: -50%;
+      left: 0%;
+      bottom: -50%;
+      width: 20px;
+      transform: translate3d(-200%, 0, 0) rotate(35deg);
+    }
+    &:hover::after {
+      transition: transform 0.5s ease-in-out;
+      transform: translate3d(500%, 0, 0) rotate(35deg);
+    }
+  }
+  .bubble{
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    position: relative;
+    background-color: #40a9ff;
+    z-index: 1;
+    &::before {
+      z-index: -1;
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: #9254de;
+      // 位置
+      //top: 50%;
+      //left: 50%;
+      top: 0;
+      left: 0;
+      transform-origin: center;
+      transform: translate3d(-50%, -50%, 0) scale(0, 0);
+      transition: transform 0.45s ease-in-out;
+    }
+    &:hover::before {
+      transform: translate3d(-50%, -50%, 0) scale(15, 15);
+    }
+  }
+}
+
+// 果冻效果 伸缩变化
+@keyframes jelly {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+
+  33% {
+    transform: scale(0.9, 1.1);
+  }
+
+  66% {
+    transform: scale(1.1, 0.9);
+  }
+}
