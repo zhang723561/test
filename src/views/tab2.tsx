@@ -1,6 +1,6 @@
 import React,{Component}  from "react";
 import {Button} from 'antd'
-import './tab2.css'
+import './scss/tab2.scss'
 
 interface IPropsBar {
     name?: string;
