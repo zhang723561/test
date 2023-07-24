@@ -1,5 +1,5 @@
 import React from 'react';
-import Texts from './components/test'
+import Texts from '../components/test'
 import {useNavigate} from 'react-router-dom'
 
 interface TYPE {

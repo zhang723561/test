@@ -3,8 +3,8 @@ import {useState} from 'react';
 
 import {useSelector, useDispatch} from 'react-redux';
 // 引入对应的方法
-import {increment, decrement} from '../store/feature/counterSlice';
-import {getMovieData} from '../store/feature/movieSlice';
+import {increment, decrement} from '../../store/feature/counterSlice';
+import {getMovieData} from '../../store/feature/movieSlice';
 
 function See() {
     // 通过useSelector直接拿到store中定义的value

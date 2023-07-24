@@ -18,7 +18,7 @@ export const routerItems  = [
             },
             {
                 path:'modal',
-                Component:lazy(()=>import('../views/modal')),
+                Component:lazy(()=>import('../views/modal/modal')),
             },
             {
                 path:'todo',
@@ -26,14 +26,12 @@ export const routerItems  = [
             },
             {
                 path:'see',
-                Component:lazy(()=>import('../views/see')),
+                Component:lazy(()=>import('../views/see/see')),
             },
             {
                 path:'*',
-                Component:lazy(()=>import('../views/404')),
+                Component:lazy(()=>import('../views/404/404')),
             }
         ]
     },
-
-
 ]

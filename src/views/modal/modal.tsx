@@ -1,5 +1,5 @@
 import React ,{Component}from 'react'
-import './scss/modal.scss'
+import '../scss/modal.scss'
 
 class Modal extends  Component<any, any>{
 
