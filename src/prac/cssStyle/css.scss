@@ -1,0 +1,20 @@
+//  多行文本 省略
+.inner_text {
+  width: 100px;
+  max-height: 28px;
+  line-height: 1.2;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+//  单行文本省略
+.text{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: left;
+}
