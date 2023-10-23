@@ -47,3 +47,13 @@ export const searchFilter = (input, option) => {
         }
     }
 }
+
+// reduce 方式过滤数组
+export const reduceArr = arr => {
+    let obj = {}
+    let res = arr.reduce((item, next) => {
+        obj[next.value] ? '' : (obj[next.value] = true && item.push(next))
+        return item
+    }, [])
+    return res
+}
