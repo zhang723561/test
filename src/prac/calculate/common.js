@@ -9,6 +9,17 @@ function reduceArr(arr,props){
 
 }
 
+function jump(num){
+    if(num === 1){
+        return 1
+    }else if(num === 2){
+        return 2
+    }
+    else{
+        return  jump(num- 1) + jump(num - 2)
+    }
+}
+
 // 百分比展示
 const numToPercent = (num) => {
     const target = +num

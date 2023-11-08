@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/sakana-widget@2.7.0/lib/sakana.min.css"
+    />
     <title>zhj</title>
     <style>
         canvas {
@@ -42,6 +46,33 @@
 </canvas>
 
 <div class="see"></div>
+
+<!--<div id="left_layer" style="position:fixed; top:350px; right:30px;">-->
+<!--    <div id="sakana-widget"></div>-->
+<!--    <script>-->
+<!--        function initSakanaWidget() {-->
+<!--            new SakanaWidget().mount('#sakana-widget');-->
+<!--        }-->
+<!--    </script>-->
+<!--    <script-->
+<!--            async-->
+<!--            onload="initSakanaWidget()"-->
+<!--            src="https://cdn.jsdelivr.net/npm/sakana-widget@2.2.2/lib/sakana.min.js"-->
+<!--    ></script>-->
+<!--</div>-->
+
+<div id="sakana-widget"></div>
+
+<script>
+    function initSakanaWidget() {
+        new SakanaWidget().mount('#sakana-widget');
+    }
+</script>
+<script
+        async
+        onload="initSakanaWidget()"
+        src="https://cdn.jsdelivr.net/npm/sakana-widget@2.7.0/lib/sakana.min.js"
+></script>
 
 <script>
     // requestAnimationFrame(callback)：告诉浏览器你希望执行一个动画，并在重绘之前，请求浏览器执行一个特定的函数来更新动画。

@@ -18,7 +18,7 @@ function getWords(num,total){
 
 //console.log(getWords(3,27))
 
-// 分发饼干
+// 分发饼干 前提是均排序完成
 function getMax(target,own){
     let tar = 0
     let res = 0
